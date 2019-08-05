@@ -1,9 +1,7 @@
 package troubleShootSearch.dSeaGate;
 
-/**
- * @author sagarsmac
- *
- */
-public interface DSeaGateI {
+import java.util.List;
 
+public interface DSeaGateI {
+	public List<String> getTechSentence();
 }

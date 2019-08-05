@@ -11,7 +11,7 @@ import troubleShootSearch.util.Helper;
  * @author Sagar Rapelli
  *
  */
-public class ProductA {
+public class ProductA implements DSeaGateI{
 
 	private static List<String> techSentence = new ArrayList<String>();
 	
@@ -22,7 +22,12 @@ public class ProductA {
 	public static void getTechSentence(FileProcessor fp) {
 		Helper.getSentence(fp, "productA.txt", techSentence);
 	}
-	
+
+	@Override
+	public List<String> getTechSentence() {
+		// TODO Auto-generated method stub
+		return techSentence;
+	}
 	
 
 }

@@ -1,6 +1,7 @@
 package troubleShootSearch.visitor;
 
 import troubleShootSearch.dSeaGate.DSeaGateI;
+import troubleShootSearch.util.Helper;
 
 public class ExactSearchVisitor extends SearchVisitor {
 
@@ -13,8 +14,8 @@ public class ExactSearchVisitor extends SearchVisitor {
 		// TODO Auto-generated method stub
 		for(String s: product.getTechSentence()) {
 			if(s.contains(keywords))
-				//print to output.txt
-				System.out.print("match");
+				Helper.write(s);
+				//System.out.print("match");
 		}
 	}
 

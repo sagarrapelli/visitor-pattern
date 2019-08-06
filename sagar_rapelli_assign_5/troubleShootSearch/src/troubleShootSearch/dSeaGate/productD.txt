@@ -1,0 +1,1 @@
+Hard Drive Error – Disk is Full, implies hard disk is full or out of space.

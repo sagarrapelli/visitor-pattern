@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import troubleShootSearch.dSeaGate.DSeaGateI;
 import troubleShootSearch.util.FileProcessor;
+import troubleShootSearch.util.Helper;
 
 public class SemanticSearchVisitor extends SearchVisitor {
 
@@ -13,8 +14,8 @@ public class SemanticSearchVisitor extends SearchVisitor {
 		keywords = input;
 	}
 	
-	public static void getTechSentence(FileProcessor fp) {
-		fp.openFile("synonyms.txt");
+	public static void getSynonyms(FileProcessor fp) {
+		fp.openFile("src/troubleShootSearch/visitor/synonyms.txt");
 		String line;
 		while(true) {
 			line = fp.readLine();
@@ -31,8 +32,26 @@ public class SemanticSearchVisitor extends SearchVisitor {
 	@Override
 	public void visit(DSeaGateI product) {
 		// TODO Auto-generated method stub
-		String[] s1 = keywords.split(" ");
+		String[] keys = keywords.split(" ");
+		String key = keys[keys.length - 1];
+		String temp = null;
+		if(synonyms.containsKey(key))
+			temp = synonyms.get(key);
+		else if(synonyms.containsValue(key)) {
+			for(String s : synonyms.keySet()) {
+				if(synonyms.get(s).equals(key))
+					temp = s;
+			}
+		}
+		if(temp!=null) {
+			keys[keys.length - 1] = temp;
+			keywords = keys.toString();
+			for(String s: product.getTechSentence()) {
+				if(s.contains(keywords))
+					//print to output.txt
+					Helper.write(s);
+					System.out.print("match");
+			}
+		}
 	}
-	
-
 }

@@ -22,7 +22,7 @@ public class ProductB implements DSeaGateI {
 	}
 	
 	public static void getTechSentence(FileProcessor fp) {
-		Helper.getSentence(fp, "productB.txt", techSentence);
+		Helper.getSentence(fp, "src/troubleShootSearch/dSeaGate/productB.txt", techSentence);
 	}
 
 	@Override

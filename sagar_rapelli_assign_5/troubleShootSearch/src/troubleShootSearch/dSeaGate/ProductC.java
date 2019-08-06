@@ -15,7 +15,7 @@ public class ProductC implements DSeaGateI{
 	}
 	
 	public static void getTechSentence(FileProcessor fp) {
-		Helper.getSentence(fp, "productC.txt", techSentence);
+		Helper.getSentence(fp, "src/troubleShootSearch/dSeaGate/productC.txt", techSentence);
 	}
 
 	@Override

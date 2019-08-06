@@ -1,0 +1,1 @@
+This Hardware Device is Not Connected to The Computer (Code 45): The error code 45 pops up mostly when the OS is unable to communicate with the connected device or cannot recognize by the Windows.

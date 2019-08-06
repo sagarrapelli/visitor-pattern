@@ -1,6 +1,5 @@
 package troubleShootSearch.dSeaGate;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class ProductA implements DSeaGateI{
 	}
 	
 	public static void getTechSentence(FileProcessor fp) {
-		Helper.getSentence(fp, "productA.txt", techSentence);
+		Helper.getSentence(fp, "src/troubleShootSearch/dSeaGate/productA.txt", techSentence);
 	}
 
 	@Override

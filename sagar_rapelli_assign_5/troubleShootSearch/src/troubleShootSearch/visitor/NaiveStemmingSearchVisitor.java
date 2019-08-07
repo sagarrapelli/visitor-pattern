@@ -3,10 +3,14 @@ package troubleShootSearch.visitor;
 import troubleShootSearch.dSeaGate.DSeaGateI;
 import troubleShootSearch.util.Helper;
 
-public class NaiveStemmingSearchVisitor extends SearchVisitor {
+public class NaiveStemmingSearchVisitor implements Visitor {
 
-	public NaiveStemmingSearchVisitor(String input) {
-		keywords = input ;
+	String keywords;
+	public NaiveStemmingSearchVisitor() {
+	}
+	
+	public void setSearchKeywords(String line) {
+		keywords = line;
 	}
 	
 	@Override
@@ -15,10 +19,12 @@ public class NaiveStemmingSearchVisitor extends SearchVisitor {
 		String[] s1 = keywords.split(" ");
 		for(String s: product.getTechSentence()) {
 			String[] array = s.split(" ");
-			for(String temp: array)
-			if(temp.contains(s1[0]))
+			for(int i = 0; i < array.length ; i++) {
+				String temp = array[i];
+				if(temp.contains(s1[0]))
 				//print to output.txt
-				Helper.write(s);
+				Helper.write("Naive Stemming Match : " + product.toString() + " " + s);
+			}
 				
 		}
 

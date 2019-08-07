@@ -2,9 +2,9 @@ package troubleShootSearch.dSeaGate;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import troubleShootSearch.util.FileProcessor;
 import troubleShootSearch.util.Helper;
+import troubleShootSearch.visitor.Visitor;
 
 public class ProductC implements DSeaGateI{
 
@@ -22,6 +22,14 @@ public class ProductC implements DSeaGateI{
 	public List<String> getTechSentence() {
 		// TODO Auto-generated method stub
 		return techSentence;
+	}
+
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
+	
+	public String toString() {
+		return "product C";
 	}
 
 }

@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Helper {
 	
-	public static String output;
+	public static String output="";
+	public static int flag = 0;
 	
 	public static void getSentence(FileProcessor fp, String fileName, List<String> l) {
 		fp.openFile(fileName);

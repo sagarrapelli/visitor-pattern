@@ -2,7 +2,7 @@ package troubleShootSearch.dSeaGate;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import troubleShootSearch.visitor.Visitor;
 import troubleShootSearch.util.FileProcessor;
 import troubleShootSearch.util.Helper;
 
@@ -28,5 +28,12 @@ public class ProductA implements DSeaGateI{
 		return techSentence;
 	}
 	
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
+	
+	public String toString() {
+		return "product A";
+	}
 
 }

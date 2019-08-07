@@ -5,6 +5,8 @@ import java.util.List;
 import troubleShootSearch.visitor.Visitor;
 import troubleShootSearch.util.FileProcessor;
 import troubleShootSearch.util.Helper;
+import troubleShootSearch.util.MyLogger;
+import troubleShootSearch.util.MyLogger.DebugLevel;
 
 /**
  * @author Sagar Rapelli
@@ -15,11 +17,14 @@ public class ProductA implements DSeaGateI{
 	private static List<String> techSentence = new ArrayList<String>();
 	
 	public ProductA() {
-		// TODO Auto-generated constructor stub
+		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
+			System.out.println("Constructor: ProductA created ");
 	}
 	
-	public static void getTechSentence(FileProcessor fp) {
+	public static void readTechSentence(FileProcessor fp) {
 		Helper.getSentence(fp, "src/troubleShootSearch/dSeaGate/productA.txt", techSentence);
+		if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
+			System.out.println("Technical sentences for product A read");
 	}
 
 	@Override

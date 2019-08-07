@@ -2,10 +2,11 @@ package troubleShootSearch.visitor;
 
 import java.util.Arrays;
 import java.util.HashMap;
-
 import troubleShootSearch.dSeaGate.DSeaGateI;
 import troubleShootSearch.util.FileProcessor;
 import troubleShootSearch.util.Helper;
+import troubleShootSearch.util.MyLogger;
+import troubleShootSearch.util.MyLogger.DebugLevel;
 
 public class SemanticSearchVisitor implements Visitor {
 
@@ -14,6 +15,8 @@ public class SemanticSearchVisitor implements Visitor {
 	ExactSearchVisitor exact;
 	
 	public SemanticSearchVisitor() {
+		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
+			System.out.println("Constructor: SemanticSearchVisitor created ");
 		exact = new ExactSearchVisitor();
 	}
 	
@@ -21,7 +24,7 @@ public class SemanticSearchVisitor implements Visitor {
 		keywords = line;
 	}
 	
-	public static void getSynonyms(FileProcessor fp) {
+	public static void readSynonyms(FileProcessor fp) {
 		fp.openFile("src/troubleShootSearch/visitor/synonyms.txt");
 		String line;
 		while(true) {
@@ -34,6 +37,8 @@ public class SemanticSearchVisitor implements Visitor {
 			}
 				
 		}
+		if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
+			System.out.println("Synonyms.txt read and stored");
 	}
 	
 	@Override
@@ -44,11 +49,15 @@ public class SemanticSearchVisitor implements Visitor {
 		String temp = null;
 		if(synonyms.containsKey(key)) {
 			temp = synonyms.get(key);
+			if(MyLogger.getDebugValue() == DebugLevel.IN_RUN)
+				System.out.println("Match found for synonym : "+key+" = "+ temp);
 		}
 		else if(synonyms.containsValue(key)) {
 			for(String s : synonyms.keySet()) {
 				if(synonyms.get(s).equals(key))
 					temp = s;
+				if(MyLogger.getDebugValue() == DebugLevel.IN_RUN)
+					System.out.println("Match found for synonym : "+key+" = "+ temp);
 			}
 		}
 		if(temp!=null) {

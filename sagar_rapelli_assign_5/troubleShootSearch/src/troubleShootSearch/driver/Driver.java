@@ -7,7 +7,9 @@ import troubleShootSearch.dSeaGate.ProductC;
 import troubleShootSearch.dSeaGate.ProductD;
 import troubleShootSearch.util.FileProcessor;
 import troubleShootSearch.util.Helper;
+import troubleShootSearch.util.MyLogger;
 import troubleShootSearch.util.Results;
+import troubleShootSearch.util.MyLogger.DebugLevel;
 import troubleShootSearch.visitor.ExactSearchVisitor;
 import troubleShootSearch.visitor.NaiveStemmingSearchVisitor;
 import troubleShootSearch.visitor.SemanticSearchVisitor;
@@ -30,13 +32,14 @@ public class Driver {
 			System.exit(0);
 		}
 		
+		MyLogger.setDebugValue(Integer.parseInt(args[2]));
 		FileProcessor fp = new FileProcessor();
 		
-		ProductA.getTechSentence(fp);
-		ProductB.getTechSentence(fp);
-		ProductC.getTechSentence(fp);
-		ProductD.getTechSentence(fp);
-		SemanticSearchVisitor.getSynonyms(fp);
+		ProductA.readTechSentence(fp);
+		ProductB.readTechSentence(fp);
+		ProductC.readTechSentence(fp);
+		ProductD.readTechSentence(fp);
+		SemanticSearchVisitor.readSynonyms(fp);
 		
 		DSeaGateI a = new ProductA();
 		DSeaGateI b = new ProductB();
@@ -81,7 +84,8 @@ public class Driver {
 		
 		
 		Results result = Helper.getResult();
-		result.writeToFile(args[1]);
+		if(MyLogger.getDebugValue() == DebugLevel.RELEASE)
+			result.writeToFile(args[1]);
 		
 	}
 }

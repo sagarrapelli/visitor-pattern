@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import troubleShootSearch.util.MyLogger.DebugLevel;
+
 public class FileProcessor {
 	private File file;
 	private Scanner sc;
@@ -13,8 +15,8 @@ public class FileProcessor {
 	 * 
 	 */
 	public FileProcessor() {
-		//if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
-		//	System.out.println("Constructor: FileProcessor obj created");
+		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
+			System.out.println("Constructor: FileProcessor obj created");
 	}
 	
 	/**

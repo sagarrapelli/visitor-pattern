@@ -2,11 +2,15 @@ package troubleShootSearch.visitor;
 
 import troubleShootSearch.dSeaGate.DSeaGateI;
 import troubleShootSearch.util.Helper;
+import troubleShootSearch.util.MyLogger;
+import troubleShootSearch.util.MyLogger.DebugLevel;
 
 public class ExactSearchVisitor implements Visitor {
 
 	String keywords;
-	public ExactSearchVisitor() {	
+	public ExactSearchVisitor() {
+		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
+			System.out.println("Constructor: ExactSearchVisitor created ");
 	}
 	
 	public void setSearchKeywords(String line) {
@@ -32,31 +36,17 @@ public class ExactSearchVisitor implements Visitor {
 			
 			if(sArray.length <= c) {
 				if(snew.contains(keywords)) {
-					if (Helper.flag == 0)
-						Helper.write("Exact Match : " + product.toString() + " " + s);
+					if (Helper.flag == 0) {
+						Helper.write("Exact Match : " + product.toString() + " - " + s);
+						if(MyLogger.getDebugValue() == DebugLevel.IN_RESULTS)
+							System.out.println("Exact match for "+keywords+" found\n" + product.toString() + " - " + s);
+					}
 					else
-						Helper.write("Semantic Match : " + product.toString() + " " + s);
+						Helper.write("Semantic Match : " + product.toString() + " - " + s);
 				}
 			}
 		}
 		
-		
-		
-		/*if(sArray.length > 1)
-			for(String s: product.getTechSentence()) {
-				if(s.contains(keywords))
-					Helper.write("Exact : " + s);
-			}
-		else {
-			for(String s: product.getTechSentence()) {
-				s = s.replaceAll(",", "");
-				String[] array = s.split(" ");
-				for(String temp: array)
-				if(temp.equals(sArray[0]))
-					//print to output.txt
-					Helper.write(s);
-			}
-		}*/
 	}
 
 }

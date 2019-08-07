@@ -1,6 +1,7 @@
 package troubleShootSearch.util;
 
 import java.io.FileWriter;
+import troubleShootSearch.util.MyLogger.DebugLevel;
 
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	private FileWriter fileWriter;
@@ -12,8 +13,8 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	 *
 	 */
 	public Results() {
-		//if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
-		//	System.out.println("Constructor: Results created ");
+		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
+			System.out.println("Constructor: Results created ");
 	}
 	
 	/**
@@ -22,6 +23,8 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	 * @param String filename
 	 */
 	public Results(String name) {
+		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
+			System.out.println("Constructor: Results created ");
 		try {
 		fileWriter = new FileWriter(name);
 		}
@@ -55,7 +58,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	}
 	
 	
-	
 	/**
 	 * method for writing to console.
 	 *
@@ -71,6 +73,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	 * 
 	 */
 	public String toString() {
-		return results.toString();
+		return results;
 	}
 }

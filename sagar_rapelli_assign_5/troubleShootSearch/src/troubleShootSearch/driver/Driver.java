@@ -27,7 +27,7 @@ public class Driver {
 		 * build.xml. To avoid that, below condition is used
 		 */
 		if (args.length != 3 || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
-
+			if(MyLogger.getDebugValue() == DebugLevel.RELEASE)
 			System.err.println("Error: Incorrect number of arguments. Program accepts 3 argumnets.");
 			System.exit(0);
 		}
@@ -35,17 +35,20 @@ public class Driver {
 		MyLogger.setDebugValue(Integer.parseInt(args[2]));
 		FileProcessor fp = new FileProcessor();
 		
+		//reading technical sentences from files
 		ProductA.readTechSentence(fp);
 		ProductB.readTechSentence(fp);
 		ProductC.readTechSentence(fp);
 		ProductD.readTechSentence(fp);
 		SemanticSearchVisitor.readSynonyms(fp);
 		
+		//creating instances of objects to be visited.
 		DSeaGateI a = new ProductA();
 		DSeaGateI b = new ProductB();
 		DSeaGateI c = new ProductC();
 		DSeaGateI d = new ProductD();
 		
+		//creating instances of visitors.
 		ExactSearchVisitor exactSearch = new ExactSearchVisitor();
 		NaiveStemmingSearchVisitor naiveSearch = new NaiveStemmingSearchVisitor();
 		SemanticSearchVisitor semanticSearch = new SemanticSearchVisitor();
@@ -63,29 +66,33 @@ public class Driver {
 				naiveSearch.setSearchKeywords(line);
 				semanticSearch.setSearchKeywords(line);
 				
+				//visiting the objects
 				a.accept(exactSearch);
 				b.accept(exactSearch);
 				c.accept(exactSearch);
 				d.accept(exactSearch);
 				
+				//visiting the objects
 				a.accept(naiveSearch);
 				b.accept(naiveSearch);
 				c.accept(naiveSearch);
 				d.accept(naiveSearch);
 				
+				//visiting the objects
 				a.accept(semanticSearch);
 				b.accept(semanticSearch);
 				c.accept(semanticSearch);
 				d.accept(semanticSearch);
 				Helper.write(" \n");
+				
+				if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
+					System.out.println(" \n");
 			}
 				
 		}
 		
-		
 		Results result = Helper.getResult();
-		if(MyLogger.getDebugValue() == DebugLevel.RELEASE)
+		if(MyLogger.getDebugValue() == DebugLevel.IN_RESULTS)
 			result.writeToFile(args[1]);
-		
 	}
 }

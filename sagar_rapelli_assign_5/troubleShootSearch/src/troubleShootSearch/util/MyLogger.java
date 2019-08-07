@@ -26,14 +26,15 @@ public class MyLogger{
 		break;
 
 	  case 2: debugLevel = DebugLevel.IN_RESULTS; 
-		writeMessage("Logger Value 2 :- Print everytime exact match is found", debugLevel);
 		break;
 
 	  case 1: debugLevel = DebugLevel.FROM_RESULTS;
-		writeMessage("Logger Value 1 :- Print everytime technical sentences are read and stored in products and synonyms are read", debugLevel);
+		writeMessage("Logger Value 1 :- Printing to std output the search results", debugLevel);
 		break;
 	      
-	  case 0: debugLevel = DebugLevel.RELEASE; break;
+	  case 0: debugLevel = DebugLevel.RELEASE; 
+	  writeMessage("Logger Value 0 :- Printing to std output only the error messages no output will be wriiten to outputfile", debugLevel);
+		break;
 	}
     }
 

@@ -29,6 +29,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 		fileWriter = new FileWriter(name);
 		}
 		catch(Exception e) {
+			if(MyLogger.getDebugValue() == DebugLevel.RELEASE)
 			System.err.println("Error in creating file");
 			e.printStackTrace();
 			System.exit(1);
@@ -43,18 +44,19 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	 * @param String
 	 */
 	public void writeToFile(String s) {
+		
 		try {
 			fileWriter = new FileWriter(s);
-			
-				fileWriter.write(results);
-			
+			fileWriter.write(results);
 			fileWriter.close();
 		}
 		catch(Exception e){
-			System.err.println("Error: In writeToFile method");
+			if(MyLogger.getDebugValue() == DebugLevel.RELEASE)
+			System.err.println("Error: In writeToFile method\n");
 			e.printStackTrace();
 			System.exit(1);
 		}
+		
 	}
 	
 	

@@ -8,16 +8,33 @@ import troubleShootSearch.util.MyLogger.DebugLevel;
 public class ExactSearchVisitor implements Visitor {
 
 	String keywords;
+	
+	/**
+	 * Constructor
+	 * @param no args
+	 */
 	public ExactSearchVisitor() {
 		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
 			System.out.println("Constructor: ExactSearchVisitor created ");
 	}
 	
+	/**
+	 * method for setting search keywords
+	 * 
+	 * @param line = keywords to be searched
+	 */
 	public void setSearchKeywords(String line) {
 		keywords = line;
 	}
 	
 	@Override
+	/**
+	 * @Override
+	 * method for implementing the visitor functionality
+	 * 
+	 * @param product = element which is being visited.
+	 * @return void
+	 */
 	public void visit(DSeaGateI product) {
 		// TODO Auto-generated method stub
 		String[] sArray = keywords.split(" ");
@@ -38,15 +55,27 @@ public class ExactSearchVisitor implements Visitor {
 				if(snew.contains(keywords)) {
 					if (Helper.flag == 0) {
 						Helper.write("Exact Match : " + product.toString() + " - " + s);
-						if(MyLogger.getDebugValue() == DebugLevel.IN_RESULTS)
+						if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
 							System.out.println("Exact match for "+keywords+" found\n" + product.toString() + " - " + s);
 					}
-					else
+					else {
 						Helper.write("Semantic Match : " + product.toString() + " - " + s);
+						if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
+							System.out.println("Semantic match for "+keywords+" found\n" + product.toString() + " - " + s);
+					}
 				}
 			}
-		}
-		
+		}	
+	}
+	
+	/**
+	 * toString() method
+	 * 
+	 * @param = no args
+	 * @return = String
+	 */
+	public String toString() {
+		return "ExactSearchVisitor";
 	}
 
 }

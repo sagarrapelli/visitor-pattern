@@ -30,6 +30,7 @@ public class FileProcessor {
 			sc = new Scanner(file);
 		}
 		catch(FileNotFoundException fn) {
+			if(MyLogger.getDebugValue() == DebugLevel.RELEASE)
 			System.out.println("File not found");
 			fn.printStackTrace();
 			System.exit(1);

@@ -14,16 +14,30 @@ public class SemanticSearchVisitor implements Visitor {
 	String keywords;
 	ExactSearchVisitor exact;
 	
+	/**
+	 * Constructor
+	 * @param no args
+	 */
 	public SemanticSearchVisitor() {
 		if(MyLogger.getDebugValue() == DebugLevel.CONSTRUCTOR)
 			System.out.println("Constructor: SemanticSearchVisitor created ");
 		exact = new ExactSearchVisitor();
 	}
 	
+	/**
+	 * method for setting search keywords
+	 * 
+	 * @param line = keywords to be searched
+	 */
 	public void setSearchKeywords(String line) {
 		keywords = line;
 	}
 	
+	/**
+	 * static method for reading synonyms from synonyms.txt
+	 * 
+	 * @param fp = FileProcessor object
+	 */
 	public static void readSynonyms(FileProcessor fp) {
 		fp.openFile("src/troubleShootSearch/visitor/synonyms.txt");
 		String line;
@@ -41,7 +55,13 @@ public class SemanticSearchVisitor implements Visitor {
 			System.out.println("Synonyms.txt read and stored");
 	}
 	
-	@Override
+	/**
+	 * @Override
+	 * method for implementing the visitor functionality
+	 * 
+	 * @param product = element which is being visited.
+	 * @return void
+	 */
 	public void visit(DSeaGateI product) {
 		// TODO Auto-generated method stub
 		String[] keys = keywords.split(" ");
@@ -69,5 +89,15 @@ public class SemanticSearchVisitor implements Visitor {
 			exact.visit(product);
 			Helper.flag = 0;
 		}
+	}
+	
+	/**
+	 * toString() method
+	 * 
+	 * @param = no args
+	 * @return = String
+	 */
+	public String toString() {
+		return "SemanticSearchVisitor";
 	}
 }

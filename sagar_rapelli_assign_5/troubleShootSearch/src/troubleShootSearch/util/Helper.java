@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Helper {
 	
-	public static String output="";
+	public static Results result = new Results();
 	public static int flag = 0;
 	
 	public static void getSentence(FileProcessor fp, String fileName, List<String> l) {
@@ -20,8 +20,11 @@ public class Helper {
 	}
 	
 	public static void write(String s) {
-		output = output + s + "\n";
+		result.results = result.results + s + "\n";
 	}
 	
+	public static Results getResult() {
+		return result;
+	}
 	
 }

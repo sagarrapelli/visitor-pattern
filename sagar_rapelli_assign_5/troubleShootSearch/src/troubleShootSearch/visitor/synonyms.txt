@@ -1,2 +1,2 @@
-processor, CPU
-drive, disk
+processor:CPU
+drive:disk

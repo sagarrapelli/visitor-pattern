@@ -7,6 +7,7 @@ import troubleShootSearch.dSeaGate.ProductC;
 import troubleShootSearch.dSeaGate.ProductD;
 import troubleShootSearch.util.FileProcessor;
 import troubleShootSearch.util.Helper;
+import troubleShootSearch.util.Results;
 import troubleShootSearch.visitor.ExactSearchVisitor;
 import troubleShootSearch.visitor.NaiveStemmingSearchVisitor;
 import troubleShootSearch.visitor.SemanticSearchVisitor;
@@ -79,9 +80,8 @@ public class Driver {
 		}
 		
 		
-		//System.out.println("Hello World! Lets get started with the assignment");
-		
-		System.out.println(Helper.output);
+		Results result = Helper.getResult();
+		result.writeToFile(args[1]);
 		
 	}
 }

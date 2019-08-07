@@ -23,10 +23,9 @@ public class Driver {
 		 * argument value is not given java takes the default value specified in
 		 * build.xml. To avoid that, below condition is used
 		 */
-		if (args.length != 5 || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")
-				|| args[3].equals("${arg3}") || args[4].equals("${arg4}")) {
+		if (args.length != 3 || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
 
-			System.err.println("Error: Incorrect number of arguments. Program accepts 5 argumnets.");
+			System.err.println("Error: Incorrect number of arguments. Program accepts 3 argumnets.");
 			System.exit(0);
 		}
 		
@@ -38,12 +37,51 @@ public class Driver {
 		ProductD.getTechSentence(fp);
 		SemanticSearchVisitor.getSynonyms(fp);
 		
+		DSeaGateI a = new ProductA();
+		DSeaGateI b = new ProductB();
+		DSeaGateI c = new ProductC();
+		DSeaGateI d = new ProductD();
 		
+		ExactSearchVisitor exactSearch = new ExactSearchVisitor();
+		NaiveStemmingSearchVisitor naiveSearch = new NaiveStemmingSearchVisitor();
+		SemanticSearchVisitor semanticSearch = new SemanticSearchVisitor();
+		
+		
+		fp.openFile(args[0]);
+		String line;
+		while(true) {
+			line = fp.readLine();
+			if(line == null)
+				break;
+			else {
+				Helper.write("keywords - " + line + "\n");
+				exactSearch.setSearchKeywords(line);
+				naiveSearch.setSearchKeywords(line);
+				semanticSearch.setSearchKeywords(line);
+				
+				a.accept(exactSearch);
+				b.accept(exactSearch);
+				c.accept(exactSearch);
+				d.accept(exactSearch);
+				
+				a.accept(naiveSearch);
+				b.accept(naiveSearch);
+				c.accept(naiveSearch);
+				d.accept(naiveSearch);
+				
+				a.accept(semanticSearch);
+				b.accept(semanticSearch);
+				c.accept(semanticSearch);
+				d.accept(semanticSearch);
+				Helper.write(" \n");
+			}
+				
+		}
 		
 		
 		//System.out.println("Hello World! Lets get started with the assignment");
 		
-		//System.out.println(Helper.output);
+		System.out.println(Helper.output);
 		
 	}
 }

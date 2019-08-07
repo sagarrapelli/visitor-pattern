@@ -8,7 +8,7 @@ import troubleShootSearch.util.MyLogger.DebugLevel;
 public class ExactSearchVisitor implements Visitor {
 
 	String keywords;
-	
+	int flag = 0;
 	/**
 	 * Constructor
 	 * @param no args
@@ -36,7 +36,7 @@ public class ExactSearchVisitor implements Visitor {
 	 * @return void
 	 */
 	public void visit(DSeaGateI product) {
-		// TODO Auto-generated method stub
+		
 		String[] sArray = keywords.split(" ");
 		
 		for(String s: product.getTechSentence()) {
@@ -54,14 +54,15 @@ public class ExactSearchVisitor implements Visitor {
 			if(sArray.length <= c) {
 				if(snew.contains(keywords)) {
 					if (Helper.flag == 0) {
-						Helper.write("Exact Match : " + product.toString() + " - " + s);
+						Helper.write("("+product.toString() + ") - " + s);
 						if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
-							System.out.println("Exact match for "+keywords+" found\n" + product.toString() + " - " + s);
+							System.out.println("Exact match found\n" + product.toString() + " - " + s);
 					}
 					else {
-						Helper.write("Semantic Match : " + product.toString() + " - " + s);
+						Helper.write("("+product.toString() + ") - " + s);
 						if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
-							System.out.println("Semantic match for "+keywords+" found\n" + product.toString() + " - " + s);
+							System.out.println("Semantic match found\n" + product.toString() + " - " + s);
+						flag = 1;
 					}
 				}
 			}

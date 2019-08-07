@@ -51,8 +51,6 @@ public class SemanticSearchVisitor implements Visitor {
 			}
 				
 		}
-		if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
-			System.out.println("Synonyms.txt read and stored");
 	}
 	
 	/**
@@ -69,15 +67,12 @@ public class SemanticSearchVisitor implements Visitor {
 		String temp = null;
 		if(synonyms.containsKey(key)) {
 			temp = synonyms.get(key);
-			if(MyLogger.getDebugValue() == DebugLevel.IN_RUN)
-				System.out.println("Match found for synonym : "+key+" = "+ temp);
 		}
 		else if(synonyms.containsValue(key)) {
 			for(String s : synonyms.keySet()) {
-				if(synonyms.get(s).equals(key))
+				if(synonyms.get(s).equals(key)) {
 					temp = s;
-				if(MyLogger.getDebugValue() == DebugLevel.IN_RUN)
-					System.out.println("Match found for synonym : "+key+" = "+ temp);
+				}
 			}
 		}
 		if(temp!=null) {
@@ -87,6 +82,11 @@ public class SemanticSearchVisitor implements Visitor {
 			Helper.flag = 1;
 			exact.setSearchKeywords(newKeywords);
 			exact.visit(product);
+			if(exact.flag == 1) {
+				if(MyLogger.getDebugValue() == DebugLevel.IN_RUN)
+					System.out.println("Match found for synonym in "+ product.toString()+" : "+key+" = "+ temp);
+				exact.flag = 0;
+			}
 			Helper.flag = 0;
 		}
 	}

@@ -1,1 +1,3 @@
-This Hardware Device is Not Connected to The Computer (Code 45): The error code 45 pops up mostly when the OS is unable to communicate with the connected device or cannot recognize by the Windows.
+This hardware device is not connected to the computer : The error code 45 pops up when the OS is unable to communicate with the connected device or cannot recognize by the Windows.
+MacOS detected a problem reading hard disk, implies the disk could be corrupt.
+3F0 error may occur due to corrupt hard disk or partition structure or bad cable that connects it with the motherboard.

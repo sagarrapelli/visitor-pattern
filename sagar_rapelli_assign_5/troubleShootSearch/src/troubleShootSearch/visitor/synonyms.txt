@@ -1,2 +1,11 @@
 processor:CPU
 drive:disk
+OS:Windows
+device:computer
+booting:starting
+memory:space
+current:power
+damage:harm
+issue:problem
+bad:faulty
+space:memory

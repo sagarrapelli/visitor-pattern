@@ -27,8 +27,12 @@ public class Driver {
 		 * build.xml. To avoid that, below condition is used
 		 */
 		if (args.length != 3 || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
-			if(MyLogger.getDebugValue() == DebugLevel.RELEASE)
 			System.err.println("Error: Incorrect number of arguments. Program accepts 3 argumnets.");
+			System.exit(0);
+		}
+		
+		if (Integer.parseInt(args[2])>4 || Integer.parseInt(args[2])<0) {
+			System.err.println("Error: Incorrect logger value");
 			System.exit(0);
 		}
 		
@@ -56,28 +60,36 @@ public class Driver {
 		
 		fp.openFile(args[0]);
 		String line;
+		int n = 0;
 		while(true) {
 			line = fp.readLine();
 			if(line == null)
 				break;
 			else {
-				Helper.write("keywords - " + line + "\n");
+				n++;
+				Helper.write(n+". keyword = " + line + "\n");
 				exactSearch.setSearchKeywords(line);
 				naiveSearch.setSearchKeywords(line);
 				semanticSearch.setSearchKeywords(line);
 				
+				if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
+					System.out.println("----------------------------------------------------------------------------------------------------- \n" + n + ". "+line);
+				
+				Helper.write(" ------ Exact Match ------");
 				//visiting the objects
 				a.accept(exactSearch);
 				b.accept(exactSearch);
 				c.accept(exactSearch);
 				d.accept(exactSearch);
 				
+				Helper.write(" ------- Naive Stemming Match ------");
 				//visiting the objects
 				a.accept(naiveSearch);
 				b.accept(naiveSearch);
 				c.accept(naiveSearch);
 				d.accept(naiveSearch);
 				
+				Helper.write(" ------- Semantic Match -------");
 				//visiting the objects
 				a.accept(semanticSearch);
 				b.accept(semanticSearch);
@@ -85,8 +97,6 @@ public class Driver {
 				d.accept(semanticSearch);
 				Helper.write(" \n");
 				
-				if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
-					System.out.println(" \n");
 			}
 				
 		}

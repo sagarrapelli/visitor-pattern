@@ -1,1 +1,3 @@
-Hard Drive Error – Disk is Full, implies hard disk is full or out of space.
+Hard drive error – Disk is full, implies hard disk is full or out of space.
+If the computer doesn’t recognize a hard drive on your computer or if your computer fails when booting, you could have a manufacturing defect on your hard disk.
+This error indicates that the computer has experienced a hard failure and this could occur due to a CPU failure

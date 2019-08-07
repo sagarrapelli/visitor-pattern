@@ -3,10 +3,10 @@ package troubleShootSearch.util;
 public class MyLogger{
 
     /*DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
-      DEBUG_VALUE=3 [Print to stdout everytime a match found from synonyms.txt for Semantic search]
-      DEBUG_VALUE=2 [Print to stdout everytime an exact match is found]
-      DEBUG_VALUE=1 [Print to stdout everytime technical sentences are read and stored in products and synonyms are read]
-      DEBUG_VALUE=0 [No output should be printed from the application to stdout. It is OK to write to the output file though" ]
+      DEBUG_VALUE=3 [Print to stdout everytime everytime match found from synonyms.txt and Semantic search is also found]
+      DEBUG_VALUE=2 [No output should be printed from the application to stdout. It is OK to write to the output file though]
+      DEBUG_VALUE=1 [Print to stdout everytime searches are found]
+      DEBUG_VALUE=0 [Print to stdout the error messages only]
     */
 
     public static enum DebugLevel {RELEASE, FROM_RESULTS, IN_RESULTS, IN_RUN, CONSTRUCTOR
@@ -22,7 +22,7 @@ public class MyLogger{
 	  			break;
 	  
 	  case 3: debugLevel = DebugLevel.IN_RUN; 
-		writeMessage("Logger Value 3 :- Print everytime match found from synonyms.txt for Semantic search", debugLevel);
+		writeMessage("Logger Value 3 :- Print everytime match found from synonyms.txt and Semantic search is also found", debugLevel);
 		break;
 
 	  case 2: debugLevel = DebugLevel.IN_RESULTS; 
@@ -33,7 +33,7 @@ public class MyLogger{
 		break;
 	      
 	  case 0: debugLevel = DebugLevel.RELEASE; 
-	  writeMessage("Logger Value 0 :- Printing to std output only the error messages no output will be wriiten to outputfile", debugLevel);
+	  writeMessage("Logger Value 0 :- Printing to std output the error messages, and no output will be written to outputfile", debugLevel);
 		break;
 	}
     }

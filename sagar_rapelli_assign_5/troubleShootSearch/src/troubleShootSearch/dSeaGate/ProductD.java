@@ -26,8 +26,6 @@ public class ProductD implements DSeaGateI{
 	 */
 	public static void readTechSentence(FileProcessor fp) {
 		Helper.getSentence(fp, "src/troubleShootSearch/dSeaGate/productD.txt", techSentence);
-		if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
-			System.out.println("Technical sentences for product D read");
 	}
 
 	/**

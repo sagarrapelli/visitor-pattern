@@ -46,7 +46,9 @@
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/troubleShootSearch.jar"  fork="true">
-        	<arg line="${args}"/>
+        	<arg value="${arg0}"/>
+        			<arg value="${arg1}"/>
+        	        <arg value="${arg2}"/>
         </java>	
     </target>
 

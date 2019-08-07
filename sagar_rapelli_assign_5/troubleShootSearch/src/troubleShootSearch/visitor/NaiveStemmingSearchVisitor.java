@@ -43,14 +43,13 @@ public class NaiveStemmingSearchVisitor implements Visitor {
 				String temp = array[i];
 				if(temp.contains(s1[0])) {
 				//print to output.txt
-					Helper.write("Naive Stemming Match : " + product.toString() + " - " + s);
+					Helper.write("("+product.toString() + ") - " + s);
 					if(MyLogger.getDebugValue() == DebugLevel.FROM_RESULTS)
-						System.out.println("Naive match for "+keywords+" found\n" + product.toString() + " - " + s);
+						System.out.println("Naive match for found\n" + product.toString() + " - " + s);
+					break;
 				}
-			}
-				
+			}		
 		}
-
 	}
 	
 	/**

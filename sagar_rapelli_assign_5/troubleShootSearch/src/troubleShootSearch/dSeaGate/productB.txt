@@ -1,2 +1,3 @@
-If Windows has a problem reading the drive, it implies that Windows has detected a hard disk issue or there is something wrong with the hard disk reading procedure.
-Hard Drive Error: Volume is dirty, occurs when users attempt to connect an external hardware on Window 10.
+If Windows has a problem reading the drive, it implies that Windows has detected a hard disk issue or there is something wrong with the reading procedure.
+Hard drive error - Volume is dirty, occurs when users attempt to connect an external hardware on Windows 10.
+Overheating can cause damage to your hard drive and other internal mechanisms of your computer.
